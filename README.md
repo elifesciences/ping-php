@@ -14,6 +14,20 @@ Installation
 
 `composer require elife/ping`
 
+Set up
+------
+
+### Symfony
+
+Add `eLife\Ping\Symfony\PingBundle` to your application's kernel.
+
+Add to your routing file:
+
+```yaml
+ping:
+  resource: '@PingBundle/Resources/config/routing.php'
+```
+
 Running the tests
 -----------------
 
