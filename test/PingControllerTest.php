@@ -5,7 +5,7 @@ namespace test\eLife\Ping;
 use eLife\Ping\PingController;
 use PHPUnit\Framework\TestCase;
 
-final class PingTest extends TestCase
+final class PingControllerTest extends TestCase
 {
     /**
      * @test
@@ -14,7 +14,7 @@ final class PingTest extends TestCase
     {
         $controller = new PingController();
 
-        $response = $controller->ping();
+        $response = $controller->pingAction();
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertSame('text/plain; charset=UTF-8', $response->headers->get('Content-Type'));

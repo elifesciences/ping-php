@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class PingController
 {
-    public function ping() : Response
+    public function pingAction() : Response
     {
         return $this->createResponse(Response::HTTP_OK, 'pong');
     }
