@@ -18,7 +18,13 @@
         "symfony/http-foundation": "^2.7 || ^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7 || ^6.0"
+        "phpunit/phpunit": "^5.7 || ^6.0",
+        "pimple/pimple": "^3.0",
+        "silex/silex": "^2.0",
+        "symfony/browser-kit": "^2.7 || ^3.0"
+    },
+    "suggest": {
+        "silex/silex": "^2.0, to use PingControllerProvider"
     },
     "extra": {
         "branch-alias": {
