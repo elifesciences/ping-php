@@ -14,6 +14,17 @@ Installation
 
 `composer require elife/ping`
 
+Set up
+------
+
+### Silex
+
+```php
+use eLife\Ping\Silex\PingControllerProvider;
+
+$app->register(new PingControllerProvider());
+```
+
 Running the tests
 -----------------
 
