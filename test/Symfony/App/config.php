@@ -2,7 +2,7 @@
 
 $container->loadFromExtension('framework', [
     'router' => [
-        'resource' => '%kernel.project_dir%/routing.php',
+        'resource' => __DIR__.'/routing.php',
     ],
     'secret' => 'secret',
     'test' => true,

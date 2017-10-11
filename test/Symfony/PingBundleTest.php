@@ -13,10 +13,10 @@ final class PingBundleTest extends WebTestCase
      */
     public function it_creates_a_service()
     {
-        $kernel = $this->bootKernel();
+        $this->bootKernel();
 
-        $this->assertTrue($kernel->getContainer()->has('ping.controller'));
-        $this->assertInstanceOf(PingController::class, $kernel->getContainer()->get('ping.controller'));
+        $this->assertTrue(static::$kernel->getContainer()->has('ping.controller'));
+        $this->assertInstanceOf(PingController::class, static::$kernel->getContainer()->get('ping.controller'));
     }
 
     /**
@@ -24,9 +24,9 @@ final class PingBundleTest extends WebTestCase
      */
     public function it_registers_a_route()
     {
-        $kernel = $this->bootKernel();
+        $this->bootKernel();
 
-        $this->assertSame('/ping', $kernel->getContainer()->get('router')->generate('ping'));
+        $this->assertSame('/ping', static::$kernel->getContainer()->get('router')->generate('ping'));
     }
 
     /**

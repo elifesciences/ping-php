@@ -22,6 +22,14 @@ final class AppKernel extends Kernel
         $loader->load(__DIR__.'/config.php');
     }
 
+    /**
+     * @deprecated
+     */
+    public function getRootDir()
+    {
+        return $this->getProjectDir();
+    }
+
     public function getProjectDir()
     {
         return __DIR__;
