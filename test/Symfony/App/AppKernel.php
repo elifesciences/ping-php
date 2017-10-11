@@ -5,6 +5,7 @@ namespace test\eLife\Ping\Symfony\App;
 use eLife\Ping\Symfony\PingBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Kernel;
 
 final class AppKernel extends Kernel
@@ -37,11 +38,21 @@ final class AppKernel extends Kernel
 
     public function getCacheDir()
     {
-        return sys_get_temp_dir().'/elife-ping/cache';
+        return $this->getWriteableDir().'/cache';
     }
 
     public function getLogDir()
     {
-        return sys_get_temp_dir().'/elife-ping/log';
+        return $this->getWriteableDir().'/log';
+    }
+
+    public function __destruct()
+    {
+        (new Filesystem())->remove($this->getWriteableDir());
+    }
+
+    final protected function getWriteableDir()
+    {
+        return sys_get_temp_dir().'/elife-ping';
     }
 }
