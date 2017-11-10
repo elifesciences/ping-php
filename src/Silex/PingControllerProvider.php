@@ -30,8 +30,15 @@ final class PingControllerProvider implements BootableProviderInterface, Control
 
     public function register(Container $app)
     {
-        $app['ping.controller'] = function () {
-            return new PingController();
+        $app['ping.check'] = $app->protect(function () {
+        });
+
+        $app['ping.controller'] = function () use ($app) {
+            return new PingController($app['ping.check'], $app['ping.logger']);
+        };
+
+        $app['ping.logger'] = function () use ($app) {
+            return $app['logger'];
         };
     }
 }
