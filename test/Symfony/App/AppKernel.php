@@ -51,7 +51,7 @@ final class AppKernel extends Kernel
         (new Filesystem())->remove($this->getWriteableDir());
     }
 
-    final protected function getWriteableDir()
+    protected function getWriteableDir()
     {
         return sys_get_temp_dir().'/elife-ping';
     }
