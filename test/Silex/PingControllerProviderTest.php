@@ -43,7 +43,7 @@ final class PingControllerProviderTest extends WebTestCase
         $this->assertSame('pong', $response->getContent());
     }
 
-    final public function createApplication() : Application
+    public function createApplication() : Application
     {
         $app = new Application();
         $app->register(new PingControllerProvider());
