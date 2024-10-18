@@ -1,5 +1,4 @@
-/build/*
-!/build/.gitkeep
+/build/
 /composer.lock
 /.php_cs.cache
 /.phpunit.result.cache
