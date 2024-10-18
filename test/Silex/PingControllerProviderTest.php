@@ -5,7 +5,6 @@ namespace test\eLife\Ping\Silex;
 use eLife\Ping\PingController;
 use eLife\Ping\Silex\PingControllerProvider;
 use Silex\Application;
-use Silex\WebTestCase;
 
 final class PingControllerProviderTest extends WebTestCase
 {
