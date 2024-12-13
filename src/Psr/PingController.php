@@ -26,11 +26,16 @@ final class PingController implements RequestHandlerInterface
         $this->streamFactory = $streamFactory;
     }
 
-    public function handle(ServerRequestInterface $request): Response
+    public function pingAction() : Response
     {
         return $this->responseFactory->createResponse(200)
             ->withBody($this->streamFactory->createStream('pong'))
             ->withHeader('Cache-Control', 'must-revalidate, no-cache, no-store, private')
             ->withHeader('Content-Type', 'text/plain; charset=UTF-8');
+    }
+
+    public function handle(ServerRequestInterface $request): Response
+    {
+        return $this->pingAction();
     }
 }

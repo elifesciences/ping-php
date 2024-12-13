@@ -19,6 +19,25 @@ final class PingControllerTest extends TestCase
             $factory
         );
 
+        $response = $controller->pingAction();
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame('text/plain; charset=UTF-8', $response->getHeaderLine('Content-Type'));
+        $this->assertSame('pong', $response->getBody()->getContents());
+        $this->assertSame('must-revalidate, no-cache, no-store, private', $response->getHeaderLine('Cache-Control'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_returns_200_pong_as_request_handler()
+    {
+        $factory = new Psr17Factory();
+        $controller = new PingController(
+            $factory,
+            $factory
+        );
+
         $response = $controller->handle($factory->createServerRequest('GET', '/ping'));
 
         $this->assertSame(200, $response->getStatusCode());
