@@ -4,9 +4,11 @@ namespace eLife\Ping\Psr;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-final class PingController
+final class PingController implements RequestHandlerInterface
 {
     /**
      * @var ResponseFactoryInterface
@@ -30,5 +32,10 @@ final class PingController
             ->withBody($this->streamFactory->createStream('pong'))
             ->withHeader('Cache-Control', 'must-revalidate, no-cache, no-store, private')
             ->withHeader('Content-Type', 'text/plain; charset=UTF-8');
+    }
+
+    public function handle(ServerRequestInterface $request): Response
+    {
+        return $this->pingAction();
     }
 }
