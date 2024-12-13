@@ -19,7 +19,7 @@ final class PingControllerTest extends TestCase
             $factory
         );
 
-        $response = $controller->pingAction();
+        $response = $controller->handle($factory->createServerRequest('GET', '/ping'));
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertSame('text/plain; charset=UTF-8', $response->getHeaderLine('Content-Type'));

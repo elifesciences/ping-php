@@ -4,9 +4,11 @@ namespace eLife\Ping\Psr;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-final class PingController
+final class PingController implements RequestHandlerInterface
 {
     /**
      * @var ResponseFactoryInterface
@@ -24,7 +26,7 @@ final class PingController
         $this->streamFactory = $streamFactory;
     }
 
-    public function pingAction() : Response
+    public function handle(ServerRequestInterface $request): Response
     {
         return $this->responseFactory->createResponse(200)
             ->withBody($this->streamFactory->createStream('pong'))
