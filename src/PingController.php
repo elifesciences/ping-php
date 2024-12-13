@@ -6,12 +6,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class PingController
 {
-    public function pingAction() : Response
+    public function pingAction(): Response
     {
         return $this->createResponse(Response::HTTP_OK, 'pong');
     }
 
-    private function createResponse(int $statusCode, string $content = null) : Response
+    private function createResponse(int $statusCode, string $content = null): Response
     {
         return new Response(
             $content ?? Response::$statusTexts[$statusCode],

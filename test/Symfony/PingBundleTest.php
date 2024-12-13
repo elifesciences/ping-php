@@ -43,7 +43,7 @@ final class PingBundleTest extends WebTestCase
         $this->assertSame('pong', $response->getContent());
     }
 
-    protected static function getKernelClass() : string
+    protected static function getKernelClass(): string
     {
         return AppKernel::class;
     }

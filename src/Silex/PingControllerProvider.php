@@ -17,7 +17,7 @@ final class PingControllerProvider implements BootableProviderInterface, Control
         $app->mount('/', $this->connect($app));
     }
 
-    public function connect(Application $app) : ControllerCollection
+    public function connect(Application $app): ControllerCollection
     {
         $controllers = $app['controllers_factory'];
 
