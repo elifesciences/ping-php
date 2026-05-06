@@ -11,7 +11,7 @@ final class PingController
         return $this->createResponse(Response::HTTP_OK, 'pong');
     }
 
-    private function createResponse(int $statusCode, string $content = null) : Response
+    private function createResponse(int $statusCode, ?string $content = null) : Response
     {
         return new Response(
             $content ?? Response::$statusTexts[$statusCode],

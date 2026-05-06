@@ -3,14 +3,13 @@
 namespace test\eLife\Ping\Symfony;
 
 use eLife\Ping\PingController;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use test\eLife\Ping\Symfony\App\AppKernel;
 
 final class PingBundleTest extends WebTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_creates_a_service()
     {
         $this->bootKernel();
@@ -19,9 +18,7 @@ final class PingBundleTest extends WebTestCase
         $this->assertInstanceOf(PingController::class, static::$kernel->getContainer()->get('ping.controller'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_registers_a_route()
     {
         $this->bootKernel();
@@ -29,9 +26,7 @@ final class PingBundleTest extends WebTestCase
         $this->assertSame('/ping', static::$kernel->getContainer()->get('router')->generate('ping'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function test()
     {
         $client = $this->createClient();
@@ -41,6 +36,12 @@ final class PingBundleTest extends WebTestCase
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertSame('pong', $response->getContent());
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        restore_exception_handler();
     }
 
     protected static function getKernelClass() : string

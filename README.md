@@ -19,14 +19,6 @@ Installation
 Set up
 ------
 
-### Silex
-
-```php
-use eLife\Ping\Silex\PingControllerProvider;
-
-$app->register(new PingControllerProvider());
-```
-
 ### Symfony
 
 Add `eLife\Ping\Symfony\PingBundle` to your application's kernel.

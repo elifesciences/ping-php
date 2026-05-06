@@ -3,13 +3,12 @@
 namespace test\eLife\Ping;
 
 use eLife\Ping\PingController;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class PingControllerTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_returns_200_pong()
     {
         $controller = new PingController();

@@ -3,14 +3,13 @@
 namespace test\eLife\Ping\Psr;
 
 use eLife\Ping\Psr\PingController;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Nyholm\Psr7\Factory\Psr17Factory;
 
 final class PingControllerTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_returns_200_pong()
     {
         $factory = new Psr17Factory();
@@ -27,9 +26,7 @@ final class PingControllerTest extends TestCase
         $this->assertSame('must-revalidate, no-cache, no-store, private', $response->getHeaderLine('Cache-Control'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_returns_200_pong_as_request_handler()
     {
         $factory = new Psr17Factory();
